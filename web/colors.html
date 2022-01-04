@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colors</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <script>
+        var actionColorMap = {
+            'none': 'white',
+            'forward': 'red',
+            'backward': 'blue',
+            'left': 'green',
+            'right': 'yellow',
+        };
+        setInterval(
+            function() {
+                $.ajax({
+                    url: 'http://127.0.0.1:80/action',
+                    success: function (action) {
+                        if (action in actionColorMap) {
+                            $('body').css('background-color', actionColorMap[action]);
+                        }
+                    },
+                    error: function (data, status, error) {
+                        console.log(data, status, error)
+                    },
+                });
+            },
+            500
+        )
+    </script>
+</body>
+</html>
