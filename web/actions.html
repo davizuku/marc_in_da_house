@@ -19,7 +19,25 @@
             data: {'action': action}
         });
     }
+    var keyActionMap = {
+        'ArrowUp': 'forward',
+        'ArrowDown': 'backward',
+        'ArrowLeft': 'left',
+        'ArrowRight': 'right',
+        'w': 'forward',
+        's': 'backward',
+        'a': 'left',
+        'd': 'right',
+    };
     $(document).ready(function() {
+        $(document).on('keydown', function (event) {
+            if (event.key in keyActionMap) {
+                setAction(keyActionMap[event.key])
+            }
+        });
+        $(document).on('keyup', function (event) {
+            setAction('none')
+        });
         $('button').on('mousedown', function(btn) {
             setAction(this.getAttribute('action'));
         });
