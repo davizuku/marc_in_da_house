@@ -13,9 +13,11 @@
     <button id="left" onclick="setAction('left')">&gt;</button>
     <button id="right" onclick="setAction('right')">&lt;</button>
     <script>
+        // TO BE Changed using dev tools
+        var host = 'http://127.0.0.1:80'
         function setAction(action) {
             $.ajax({
-                url: 'http://127.0.0.1:80/action',
+                url: host + '/action',
                 method: 'post',
                 data: {'action': action}
             });

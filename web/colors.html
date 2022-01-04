@@ -16,10 +16,12 @@
             'left': 'green',
             'right': 'yellow',
         };
+        // TO BE Changed using dev tools
+        var host = 'http://127.0.0.1:80'
         setInterval(
             function() {
                 $.ajax({
-                    url: 'http://127.0.0.1:80/action',
+                    url: host + '/action',
                     success: function (action) {
                         if (action in actionColorMap) {
                             $('body').css('background-color', actionColorMap[action]);
