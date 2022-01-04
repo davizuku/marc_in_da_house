@@ -6,22 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actions</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    // TO BE Changed using dev tools
+    var host = 'http://127.0.0.1:80'
+    function setAction(action) {
+        $.ajax({
+            url: host + '/action',
+            method: 'post',
+            data: {'action': action}
+        });
+    }
+    $(document).ready(function() {
+        $('button').on('mousedown', function(btn) {
+            setAction(this.getAttribute('action'));
+        });
+        $('button').on('mouseup', function() {
+            setAction('none')
+        });
+    });
+    </script>
 </head>
 <body>
-    <button id="up" onclick="setAction('forward')">^</button>
-    <button id="down" onclick="setAction('backward')">v</button>
-    <button id="left" onclick="setAction('left')">&gt;</button>
-    <button id="right" onclick="setAction('right')">&lt;</button>
-    <script>
-        // TO BE Changed using dev tools
-        var host = 'http://127.0.0.1:80'
-        function setAction(action) {
-            $.ajax({
-                url: host + '/action',
-                method: 'post',
-                data: {'action': action}
-            });
-        }
-    </script>
+    <button id="up" action='forward'>^</button>
+    <button id="down" action='backward'>v</button>
+    <button id="left" action='left'>&gt;</button>
+    <button id="right" action='right'>&lt;</button>
 </body>
 </html>
