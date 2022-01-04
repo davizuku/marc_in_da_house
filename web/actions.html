@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actions</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
     // TO BE Changed using dev tools
     var host = 'http://127.0.0.1:80'
@@ -23,13 +26,47 @@
         $('button').on('mouseup', function() {
             setAction('none')
         });
+        $('button').addClass('s4 btn waves-effect waves-light grey darken-4')
     });
     </script>
+    <style>
+        html {
+            height: 100%;
+        }
+        body {
+            background-color: #ccc;
+            height: 100vh;
+            padding: 0;
+        }
+        button {
+            height: 50vh !important;
+            padding: 5px;
+        }
+        .row {
+            margin: 0;
+            padding: 0;
+            height: 50vh;
+        }
+    </style>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
-<body>
-    <button id="up" action='forward'>^</button>
-    <button id="down" action='backward'>v</button>
-    <button id="left" action='left'>&gt;</button>
-    <button id="right" action='right'>&lt;</button>
+<body class="container">
+    <div class="row">
+        <button id="up" class="col offset-s4" action='forward'>
+            <i class="large material-icons">arrow_upward</i>
+        </button>
+    </div>
+    <div class="row">
+        <button id="left" class="col" action='left'>
+            <i class="large material-icons">arrow_back</i>
+        </button>
+        <button id="down" class="col" action='backward'>
+            <i class="large material-icons">arrow_downward</i>
+        </button>
+        <button id="right" class="col" action='right'>
+            <i class="large material-icons">arrow_forward</i>
+        </button>
+    </div>
 </body>
 </html>
