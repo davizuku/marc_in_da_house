@@ -1,4 +1,8 @@
 #!/usr/bin/env pybricks-micropython
+
+
+# Execute with brickrun -r pybricks-micropython -- main.py
+
 import socket
 from pybricks.hubs import EV3Brick
 from pybricks.ev3devices import (Motor, TouchSensor, ColorSensor,
