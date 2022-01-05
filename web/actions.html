@@ -37,10 +37,10 @@
         $(document).on('keyup', function (event) {
             setAction('none')
         });
-        $('button').on('mousedown', function(btn) {
+        $('button').on('mousedown touchstart', function(btn) {
             setAction(this.getAttribute('action'));
         });
-        $('button').on('mouseup', function() {
+        $('button').on('mouseup touchend', function() {
             setAction('none')
         });
         $('button').addClass('s4 btn waves-effect waves-light grey darken-4')
