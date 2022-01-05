@@ -10,7 +10,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
-    var host = prompt('Enter the host:port of the controls API')
+    var host = 'http://188.84.150.239:1505';
+    // var host = prompt('Enter the host:port of the controls API')
     function setAction(action) {
         $.ajax({
             url: host + '/action',
