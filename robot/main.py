@@ -25,25 +25,28 @@ ev3.speaker.beep()
 
 left_motor = Motor(Port.C)
 right_motor = Motor(Port.D)
-robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
+robot = DriveBase(left_motor, right_motor, wheel_diameter=35, axle_track=265)
 colorSensor = ColorSensor(Port.S1)
 
-colorActionMap = {
-    Color.RED: 'forward',
-    Color.BLUE: 'backward',
-    Color.GREEN: 'left',
-    Color.YELLOW: 'right',
-}
-
 while True:
-    color = colorSensor.color()
-    if color in colorActionMap:
-        action = colorActionMap[color]
-        if action == 'forward':
-            robot.straight(100)
-        elif action == 'backward':
-            robot.straight(-100)
-        elif action == 'left':
-            robot.turn(30)
-        elif action == 'right':
-            robot.turn(-30)
+    sleep(0.2)
+    ambient = colorSensor.ambient()
+    action = None
+    if ambient < 2:
+        action = 'none'
+    elif ambient < 3:
+        action = 'left'
+    elif ambient < 6:
+        action = 'backward'
+    elif ambient < 9:
+        action = 'forward'
+    elif ambient < 11:
+        action = 'right'
+    if action == 'forward':
+        robot.straight(200)
+    elif action == 'backward':
+        robot.straight(-200)
+    elif action == 'left':
+        robot.turn(30)
+    elif action == 'right':
+        robot.turn(-30)
