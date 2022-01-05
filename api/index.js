@@ -1,6 +1,14 @@
 var express = require('express');
 var bodyParser = require("body-parser");
 var cors = require('cors');
+var process = require('process');
+
+if (process.argv.length < 3) {
+    console.log('Usage: node index.js <port>');
+    process.exit()
+}
+
+var port = process.argv[2]
 
 var app = express();
 
@@ -33,6 +41,6 @@ app.post('/action', function (req, res) {
     res.send();
 });
 
-app.listen(80, function () {
-    console.log('node-http Server listening on port 80');
+app.listen(port, function () {
+    console.log('node-http Server listening on port ' + port);
 });
