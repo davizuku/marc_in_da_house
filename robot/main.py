@@ -50,8 +50,8 @@ while True:
     if action == 'forward':
         robot.straight(500)
     elif action == 'backward':
-        robot.straight(-500)
+        robot.straight(500)
     elif action == 'left':
-        robot.turn(30)
+        robot.turn(45)
     elif action == 'right':
-        robot.turn(-30)
+        robot.turn(-45)
