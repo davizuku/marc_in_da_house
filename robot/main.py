@@ -30,23 +30,29 @@ robot.settings(
     turn_acceleration=100
 )
 ev3.speaker.beep()
+nSamples = 10
 
 # fd = open('/tmp/debug.log', 'w')
 
 while True:
-    sleep(0.5)
-    ambient = colorSensor.ambient()
+    # sleep(0.5)
+    ambient = 0
+    for i in range(nSamples):
+        ambient += colorSensor.ambient()
+        sleep(0.05)
+    ambient /= nSamples
     # print('New iteration', file=fd)
-    # print([ambient, colorSensor.color(), colorSensor.reflection()], file=fd)
+    # print([ambient], file=fd)
     action = 'none'
-    if ambient == 1:
+    if ambient == 1.0:
         action = 'right'
-    elif ambient == 2:
+    elif ambient == 2.0:
         action = 'left'
-    elif ambient == 3:
-        action = 'backward'
-    elif ambient == 4:
+    elif ambient >= 3.0:
         action = 'forward'
+    elif ambient == 0.8:
+        action = 'backward'
+    # print('Action: ' + action, file=fd)
     if action == 'forward':
         robot.straight(500)
     elif action == 'backward':
