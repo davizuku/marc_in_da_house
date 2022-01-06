@@ -19,33 +19,38 @@ import sys
 
 # Create your objects here.
 ev3 = EV3Brick()
-
-# Write your program here.
-ev3.speaker.beep()
-
+colorSensor = ColorSensor(Port.S2)
 left_motor = Motor(Port.C)
 right_motor = Motor(Port.D)
 robot = DriveBase(left_motor, right_motor, wheel_diameter=35, axle_track=265)
-colorSensor = ColorSensor(Port.S1)
+robot.settings(
+    straight_speed=500,
+    straight_acceleration=100,
+    turn_rate=300,
+    turn_acceleration=100
+)
+ev3.speaker.beep()
+
+# fd = open('/tmp/debug.log', 'w')
 
 while True:
-    sleep(0.2)
+    sleep(0.5)
     ambient = colorSensor.ambient()
-    action = None
-    if ambient < 2:
-        action = 'none'
-    elif ambient < 3:
-        action = 'left'
-    elif ambient < 6:
-        action = 'backward'
-    elif ambient < 9:
-        action = 'forward'
-    elif ambient < 11:
+    # print('New iteration', file=fd)
+    # print([ambient, colorSensor.color(), colorSensor.reflection()], file=fd)
+    action = 'none'
+    if ambient == 1:
         action = 'right'
+    elif ambient == 2:
+        action = 'left'
+    elif ambient == 3:
+        action = 'backward'
+    elif ambient == 4:
+        action = 'forward'
     if action == 'forward':
-        robot.straight(200)
+        robot.straight(500)
     elif action == 'backward':
-        robot.straight(-200)
+        robot.straight(-500)
     elif action == 'left':
         robot.turn(30)
     elif action == 'right':
