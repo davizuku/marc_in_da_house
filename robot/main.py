@@ -44,20 +44,20 @@ while True:
     # print('New iteration', file=fd)
     # print([ambient], file=fd)
     action = 'none'
-    if ambient == 1.0:
-        action = 'right'
-    elif ambient == 2.0:
+    if ambient >= 4.0:
+        action = 'bell'
+    elif ambient >= 2.0:
         action = 'left'
-    elif ambient >= 3.0:
-        action = 'forward'
-    elif ambient == 0.8:
-        action = 'backward'
+    elif ambient == 1.0:
+        action = 'right'
+    else:
+        action = 'none'
     # print('Action: ' + action, file=fd)
-    if action == 'forward':
-        robot.straight(500)
-    elif action == 'backward':
-        robot.straight(500)
+    if action == 'none':
+        robot.stop()
     elif action == 'left':
         robot.turn(45)
     elif action == 'right':
         robot.turn(-45)
+    elif action == 'bell':
+        ev3.speaker.beep()
