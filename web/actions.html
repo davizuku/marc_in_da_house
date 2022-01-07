@@ -66,10 +66,18 @@
             padding: 0;
             height: 50%;
         }
+        .row.instructions {
+            margin-top: 30vh;
+            padding: 0;
+            height: 10vh;
+        }
         .instructions span {
             position: relative;
-            top: 30vh;
-            vertical-align: middle;
+            height: 100%;
+            color: darkslategray;
+            line-height: 100%;
+            display: inline-block;
+            vertical-align: text-bottom;
         }
     </style>
     <!--Let browser know website is optimized for mobile-->
@@ -77,9 +85,9 @@
 </head>
 <body class="container">
     <div class="row instructions">
-        <span class="col s4">a / arrow left</span>
-        <span class="col s4">b / space </span>
-        <span class="col s4">d / arrow right</span>
+        <span class="col s4 center">a · arrow left</span>
+        <span class="col s4 center">b · space </span>
+        <span class="col s4 center">d · arrow right</span>
     </div>
     <div class="row">
         <button id="left" class="col" action='left'>
