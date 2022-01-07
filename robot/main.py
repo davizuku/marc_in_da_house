@@ -34,12 +34,12 @@ nSamples = 10
 
 # fd = open('/tmp/debug.log', 'w')
 
+prevAction = None
 while True:
-    # sleep(0.5)
     ambient = 0
     for i in range(nSamples):
         ambient += colorSensor.ambient()
-        sleep(0.05)
+        sleep(0.1)
     ambient /= nSamples
     # print('New iteration', file=fd)
     # print([ambient], file=fd)
@@ -48,16 +48,18 @@ while True:
         action = 'bell'
     elif ambient >= 2.0:
         action = 'left'
-    elif ambient == 1.0:
+    elif ambient >= 1.0:
         action = 'right'
     else:
         action = 'none'
     # print('Action: ' + action, file=fd)
-    if action == 'none':
-        robot.stop()
-    elif action == 'left':
-        robot.turn(45)
-    elif action == 'right':
-        robot.turn(-45)
-    elif action == 'bell':
-        ev3.speaker.beep()
+    if prevAction != action:
+        if action == 'none':
+            robot.stop()
+        elif action == 'left':
+            robot.drive(0, 30)
+        elif action == 'right':
+            robot.drive(0, -30)
+        elif action == 'bell':
+            ev3.speaker.beep()
+    prevAction = action
