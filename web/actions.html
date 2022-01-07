@@ -46,6 +46,7 @@
             setAction('none')
         });
         $('button').addClass('s4 btn waves-effect waves-light grey darken-4')
+        $('button#bell').removeClass('grey darken-4').addClass('yellow black-text')
     });
     </script>
     <style>
@@ -73,16 +74,13 @@
 </head>
 <body class="container">
     <div class="row">
-        <button id="up" class="col offset-s4" action='forward'>
-            <i class="large material-icons">arrow_upward</i>
-        </button>
     </div>
     <div class="row">
         <button id="left" class="col" action='left'>
             <i class="large material-icons">arrow_back</i>
         </button>
-        <button id="down" class="col" action='backward'>
-            <i class="large material-icons">arrow_downward</i>
+        <button id="bell" class="col" action='bell'>
+            <i class="large material-icons">notifications_active</i>
         </button>
         <button id="right" class="col" action='right'>
             <i class="large material-icons">arrow_forward</i>
