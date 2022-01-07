@@ -21,6 +21,7 @@ var VALID_ACTIONS = {
     'backward': true,
     'right': true,
     'left': true,
+    'bell': true,
 };
 
 app.use(bodyParser.urlencoded({ extended: false }));
