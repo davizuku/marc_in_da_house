@@ -21,14 +21,12 @@
         });
     }
     var keyActionMap = {
-        'ArrowUp': 'forward',
-        'ArrowDown': 'backward',
         'ArrowLeft': 'left',
         'ArrowRight': 'right',
-        'w': 'forward',
-        's': 'backward',
         'a': 'left',
         'd': 'right',
+        ' ': 'bell',
+        'b': 'bell',
     };
     $(document).ready(function() {
         $(document).on('keydown', function (event) {
@@ -68,12 +66,20 @@
             padding: 0;
             height: 50%;
         }
+        .instructions span {
+            position: relative;
+            top: 30vh;
+            vertical-align: middle;
+        }
     </style>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body class="container">
-    <div class="row">
+    <div class="row instructions">
+        <span class="col s4">a / arrow left</span>
+        <span class="col s4">b / space </span>
+        <span class="col s4">d / arrow right</span>
     </div>
     <div class="row">
         <button id="left" class="col" action='left'>
